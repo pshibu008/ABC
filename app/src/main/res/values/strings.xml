@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ABC</string>
+    <string name="carousel_image">Carousel Image</string>
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="floating_action_button">Floating Action Button</string>
+    <string name="custom_tab_indicator">Custom Tab Indicator</string>
+
+</resources>
