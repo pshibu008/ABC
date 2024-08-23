@@ -1,4 +1,4 @@
-package com.example.abc.presentation.ui
+package com.example.abc.presentation.ui.screens
 
 import android.graphics.Color
 import android.os.Bundle

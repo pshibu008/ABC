@@ -49,6 +49,56 @@ class CustomItemDataSource {
                     "This is a description",
                     R.drawable.ic_launcher_foreground
                 ),
+                Item(
+                    "Jackal",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
+                Item(
+                    "Elephant",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
+                Item(
+                    "Fox",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
+                Item(
+                    "Cheetah",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
+                Item(
+                    "Monkey",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
+                Item(
+                    "Jackal",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
+                Item(
+                    "Elephant",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
+                Item(
+                    "Fox",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
+                Item(
+                    "Cheetah",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
+                Item(
+                    "Monkey",
+                    "This is a description",
+                    R.drawable.ic_launcher_foreground
+                ),
 
             )),
             CustomItem(R.drawable.ic_launcher_foreground, listOf<Item>(
