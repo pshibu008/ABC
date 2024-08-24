@@ -8,122 +8,152 @@ class CustomItemDataSource {
 
     fun fetchCustomItems(): List<CustomItem> {
         return mutableListOf(
-            CustomItem(R.drawable.ic_launcher_background, listOf<Item>(
+            CustomItem(R.drawable.animals, listOf<Item>(
                 Item(
-                "Lion",
+                "Rabbit",
                 "This is a description",
-                R.drawable.ic_launcher_foreground
+                R.drawable.rabbit
+                ),
+                Item(
+                    "Pigeon",
+                    "This is a description",
+                    R.drawable.pigeon
+                ),
+                Item(
+                    "Squirrel",
+                    "This is a description",
+                    R.drawable.squirrel
                 ),
                 Item(
                     "Tiger",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.tiger
                 ),
                 Item(
-                    "Rabbit",
+                    "Whale",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.whale
                 ),
                 Item(
-                    "Jackal",
+                    "Swan",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.swan
                 ),
                 Item(
-                    "Elephant",
+                    "Sparrow",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.sparrow
                 ),
                 Item(
-                    "Fox",
+                    "Snake",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.rattlesnake
                 ),
                 Item(
-                    "Cheetah",
+                    "Peacock",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.peacock
                 ),
                 Item(
-                    "Monkey",
+                    "Panda",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.panda
                 ),
 
             )),
-            CustomItem(R.drawable.ic_launcher_foreground, listOf<Item>(
+            CustomItem(R.drawable.fruits, listOf<Item>(
                 Item(
-                    "Apple",
+                    "Apricot",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.apricot
                 ),
                 Item(
-                    "Mango",
+                    "Avocado",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.avocado
                 ),
                 Item(
                     "Banana",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.banana
                 ),
                 Item(
-                    "Guava",
+                    "Cherry",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.cherry
                 ),
                 Item(
-                    "Grapes",
+                    "Limes",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.limes
                 ),
                 Item(
-                    "Pineapple",
+                    "Pomegranate",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.pomegranate
+                ),
+                Item(
+                    "Orange",
+                    "This is a description",
+                    R.drawable.orange
+                ),
+                Item(
+                    "Raspberry",
+                    "This is a description",
+                    R.drawable.raspberry
+                ),
+                Item(
+                    "Mango",
+                    "This is a description",
+                    R.drawable.mango
                 ),
 
                 )),
-            CustomItem(R.drawable.ic_launcher_background, listOf<Item>(
+            CustomItem(R.drawable.planet, listOf<Item>(
                 Item(
                     "Mercury",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.mercury
                 ),
                 Item(
                     "Venus",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.venus
                 ),
                 Item(
                     "Earth",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.earth
                 ),
                 Item(
                     "Mars",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.mars
                 ),
                 Item(
                     "Jupiter",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.jupiter
                 ),
                 Item(
                     "Saturn",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.saturn
                 ),
                 Item(
                     "Uranus",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.uranus
                 ),
                 Item(
                     "Neptune",
                     "This is a description",
-                    R.drawable.ic_launcher_foreground
+                    R.drawable.neptune
+                ),
+                Item(
+                    "Pluto",
+                    "This is a description",
+                    R.drawable.pluto
                 ),
 
                 ))
