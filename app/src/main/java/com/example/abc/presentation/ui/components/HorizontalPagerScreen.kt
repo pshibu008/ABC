@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.PagerState
@@ -32,7 +33,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.abc.R
 import com.example.abc.domain.model.CustomItem
 import com.example.abc.domain.model.Item
 import com.example.abc.util.CustomItemUtils
@@ -80,8 +83,9 @@ fun HorizontalPagerScreen(customItems: List<CustomItem>, currentPage: MutableSta
                     .padding(16.dp)
             ) {
                 Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "Add"
+                    painter = painterResource(id = R.drawable.stats),
+                    contentDescription = "Status",
+                    modifier = Modifier.size(24.dp)
                 )
             }
         }

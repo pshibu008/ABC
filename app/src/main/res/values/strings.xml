@@ -5,5 +5,6 @@
     <string name="floating_action_button">Floating Action Button</string>
     <string name="custom_tab_indicator">Custom Tab Indicator</string>
     <string name="title_activity_second">SecondActivity</string>
+    <string name="top_characters">Top Characters</string>
 
 </resources>
