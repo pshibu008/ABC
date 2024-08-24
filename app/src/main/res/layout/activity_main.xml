@@ -28,16 +28,21 @@
                 android:layout_gravity="center"
                 app:tabGravity="center"
                 app:tabMode="fixed"
-                app:tabIndicator="@android:color/transparent"
                 app:tabIndicatorHeight="0dp"
+                app:tabIndicator="@null"
+                app:tabRippleColor="@android:color/transparent"
                 app:tabBackground="@android:color/transparent"
-                app:tabRippleColor="@android:color/transparent"/>
+                android:elevation="0dp"
+                style="@style/NoTabLayoutShadow" />
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:queryHint="Search..." />
+                android:queryHint="Search..."
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/rounded_search_view"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
