@@ -5,5 +5,6 @@
     <string name="floating_action_button">Floating Action Button</string>
     <string name="custom_tab_indicator">Custom Tab Indicator</string>
     <string name="top_characters">Top Characters</string>
+    <string name="planet_image">Planet Image</string>
 
 </resources>

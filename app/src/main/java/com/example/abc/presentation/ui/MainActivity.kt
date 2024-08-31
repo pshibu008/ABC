@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -13,15 +14,17 @@ import com.example.abc.R
 import com.example.abc.data.source.CustomItemDataSource
 import com.example.abc.domain.model.CustomItem
 import com.example.abc.domain.model.Item
-import com.example.abc.domain.repository.CustomItemRepository
+import com.example.abc.domain.repository.CustomItemRepositoryImpl
+import com.example.abc.domain.usecase.FilterItemsUseCase
+import com.example.abc.domain.usecase.TopThreeFrequentCharactersUseCase
 import com.example.abc.presentation.adapter.CarouselViewPagerAdapter
 import com.example.abc.presentation.adapter.ItemListAdapter
 import com.example.abc.presentation.viewmodel.CustomItemViewModel
 import com.example.abc.presentation.viewmodel.CustomItemViewModelFactory
-import com.example.abc.util.CustomItemUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,11 +41,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initViews()
-        setupTabLayout()
         setupViewModel()
         setupSearchView()
         setupViewPager()
         setupFabButton()
+        setupTabLayout()
     }
 
     private fun initViews() {
@@ -67,16 +70,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val factory = CustomItemViewModelFactory(CustomItemRepository(CustomItemDataSource()))
+        val filterItemsUseCase = FilterItemsUseCase()
+        val topThreeFrequentCharactersUseCase = TopThreeFrequentCharactersUseCase()
+        val repository = CustomItemRepositoryImpl(CustomItemDataSource())
+        val factory = CustomItemViewModelFactory(filterItemsUseCase, topThreeFrequentCharactersUseCase, repository)
+
         viewModel = ViewModelProvider(this, factory)[CustomItemViewModel::class.java]
 
-        viewModel.customItems.observe(this) { customItems ->
-            if (customItems.isNotEmpty()) {
-                setupCarousel(customItems)
-                setupRecyclerView(customItems[0].list)
+        // Collect customItems Flow to set up the initial RecyclerView and ViewPager
+        lifecycleScope.launch {
+            viewModel.customItems.collect { customItems ->
+                if (customItems.isNotEmpty()) {
+                    fullItemList = customItems[0].list
+                    setupCarousel(customItems)
+                    setupRecyclerView(fullItemList)
+                }
             }
         }
-        viewModel.fetchCustomItems()
     }
 
     private fun setupCarousel(customItems: List<CustomItem>) {
@@ -99,11 +109,17 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?) = false
             override fun onQueryTextChange(newText: String?): Boolean {
-                val filteredList = CustomItemUtils.filterList(fullItemList, newText)
-                updateRecyclerView(filteredList)
+                viewModel.filterItems(fullItemList, newText)
                 return true
             }
         })
+
+        // Collect itemList Flow to update RecyclerView when filtered items change
+        lifecycleScope.launch {
+            viewModel.itemList.collect { filteredItems ->
+                updateRecyclerView(filteredItems)
+            }
+        }
     }
 
     private fun setupViewPager() {
@@ -112,8 +128,7 @@ class MainActivity : AppCompatActivity() {
                 super.onPageSelected(position)
                 viewModel.customItems.value?.let {
                     fullItemList = it[position].list
-                    val filteredList = CustomItemUtils.filterList(fullItemList, searchView.query.toString())
-                    updateRecyclerView(filteredList)
+                    viewModel.filterItems(fullItemList, searchView.query.toString())
                 }
             }
         })
@@ -121,12 +136,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupFabButton() {
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
-            StatsBottomSheetDialog(this).show(fullItemList)
+            val topThreeCharacters = viewModel.getTopThreeFrequentCharacters(fullItemList)
+            StatsBottomSheetDialog(this).show(topThreeCharacters)
         }
     }
 
     private fun updateRecyclerView(items: List<Item>) {
         itemListAdapter.updateItems(items)
     }
-
 }
