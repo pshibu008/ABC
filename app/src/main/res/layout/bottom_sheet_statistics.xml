@@ -2,21 +2,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/_16dp">
 
     <TextView
         android:id="@+id/textViewHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:textSize="@dimen/heading_size"
+        android:paddingTop="@dimen/_8dp"
+        android:paddingBottom="@dimen/_8dp"
         android:text="@string/top_characters" />
 
     <TextView
         android:id="@+id/textViewStats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp" />
+        android:textSize="@dimen/text_value_size" />
 
 </LinearLayout>
