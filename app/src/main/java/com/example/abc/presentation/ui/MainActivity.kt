@@ -77,7 +77,6 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, factory)[CustomItemViewModel::class.java]
 
-        // Collect customItems Flow to set up the initial RecyclerView and ViewPager
         lifecycleScope.launch {
             viewModel.customItems.collect { customItems ->
                 if (customItems.isNotEmpty()) {
