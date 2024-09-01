@@ -27,6 +27,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -38,14 +40,13 @@ import androidx.compose.ui.unit.dp
 import com.example.abc.R
 import com.example.abc.domain.model.CustomItem
 import com.example.abc.domain.model.Item
-import com.example.abc.util.CustomItemUtils
+import com.example.abc.presentation.viewmodel.CustomItemViewModel
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class,
-    ExperimentalMaterialApi::class
-)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
 @Composable
-fun HorizontalPagerScreen(customItems: List<CustomItem>, currentPage: MutableState<Int>) {
+fun HorizontalPagerScreen(viewModel: CustomItemViewModel, currentPage: MutableState<Int>) {
+    val customItems by viewModel.customItems.collectAsState()
     val pagerState = rememberPagerState(
         initialPage = 0,
         pageCount = { customItems.size }
@@ -56,13 +57,14 @@ fun HorizontalPagerScreen(customItems: List<CustomItem>, currentPage: MutableSta
     val coroutineScope = rememberCoroutineScope()
 
     val currentItems = customItems.getOrNull(currentPage.value)?.list ?: emptyList()
+    val topCharacters = viewModel.getTopThreeFrequentCharacters(currentItems)
 
     UpdateCurrentPage(pagerState, currentPage)
 
     ModalBottomSheetLayout(
         sheetState = bottomSheetState,
         sheetContent = {
-            BottomSheetContent(items = currentItems)
+            BottomSheetContent(topCharacters)
         }
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -117,9 +119,7 @@ fun UpdateCurrentPage(pagerState: PagerState, currentPage: MutableState<Int>) {
 }
 
 @Composable
-fun BottomSheetContent(items: List<Item>) {
-    val topCharacters = CustomItemUtils.topThreeFrequentCharactersFromTitles(items)
-
+fun BottomSheetContent(topCharacters: List<Pair<Char, Int>>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -138,6 +138,7 @@ fun BottomSheetContent(items: List<Item>) {
         }
     }
 }
+
 
 
 

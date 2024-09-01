@@ -30,13 +30,13 @@ fun SearchField(searchQuery: MutableState<String>) {
         placeholder = { Text("Search...") },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp) // Padding for spacing
-            .background(Color.White, shape = RoundedCornerShape(16.dp)) // Rounded corners with background color
-            .clip(RoundedCornerShape(16.dp)) // Clip content to rounded corners
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .background(Color.White, shape = RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(16.dp))
             .border(
-                width = 1.dp, // Border width
-                color = Color.Gray, // Border color
-                shape = RoundedCornerShape(16.dp) // Match border shape to TextField shape
+                width = 1.dp,
+                color = Color.Gray,
+                shape = RoundedCornerShape(16.dp)
             ),
         leadingIcon = {
             Icon(

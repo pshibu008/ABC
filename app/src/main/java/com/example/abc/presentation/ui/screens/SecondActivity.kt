@@ -6,6 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
 import com.example.abc.data.source.CustomItemDataSource
 import com.example.abc.domain.repository.CustomItemRepository
+import com.example.abc.domain.repository.CustomItemRepositoryImpl
+import com.example.abc.domain.usecase.FilterItemsUseCase
+import com.example.abc.domain.usecase.TopThreeFrequentCharactersUseCase
 import com.example.abc.presentation.ui.components.MainContent
 import com.example.abc.presentation.viewmodel.CustomItemViewModel
 import com.example.abc.presentation.viewmodel.CustomItemViewModelFactory
@@ -18,18 +21,31 @@ class SecondActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         initializeViewModel()
+
         setContent {
             MainContent(viewModel)
         }
 
-        viewModel.fetchCustomItems()
     }
 
     private fun initializeViewModel() {
-        val factory = CustomItemViewModelFactory(CustomItemRepository(CustomItemDataSource()))
+
+        val filterItemsUseCase = FilterItemsUseCase()
+        val topThreeFrequentCharactersUseCase = TopThreeFrequentCharactersUseCase()
+        val dataSource = CustomItemDataSource()
+        val repository = CustomItemRepositoryImpl(dataSource)
+
+        val factory = CustomItemViewModelFactory(
+            filterItemsUseCase,
+            topThreeFrequentCharactersUseCase,
+            repository
+        )
+
         viewModel = ViewModelProvider(this, factory)[CustomItemViewModel::class.java]
     }
 }
+
+
 
 
 
