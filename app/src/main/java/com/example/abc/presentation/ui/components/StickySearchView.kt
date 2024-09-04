@@ -14,15 +14,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import com.example.abc.R
 import kotlin.math.roundToInt
 
 @Composable
 fun StickySearchView(scrollState: LazyListState, searchQuery: MutableState<String>) {
 
-    val stickyHeightPx = with(LocalDensity.current) { 56.dp.toPx() }
+    val stickyHeightPx = with(LocalDensity.current) { dimensionResource(id = R.dimen._56dp).toPx() }
 
     val scrollOffset by remember {
         derivedStateOf {
@@ -42,7 +44,7 @@ fun StickySearchView(scrollState: LazyListState, searchQuery: MutableState<Strin
             .background(Color.White)
             .offset { IntOffset(0, scrollOffset.roundToInt()) }
             .zIndex(1f)
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = dimensionResource(id = R.dimen._16dp))
     ) {
         SearchField(searchQuery)
     }

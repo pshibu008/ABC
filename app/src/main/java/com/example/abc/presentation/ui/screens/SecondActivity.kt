@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
+import com.example.abc.data.repository.CustomItemRepositoryImpl
 import com.example.abc.data.source.CustomItemDataSource
-import com.example.abc.domain.repository.CustomItemRepository
-import com.example.abc.domain.repository.CustomItemRepositoryImpl
 import com.example.abc.domain.usecase.FilterItemsUseCase
 import com.example.abc.domain.usecase.TopThreeFrequentCharactersUseCase
 import com.example.abc.presentation.ui.components.MainContent

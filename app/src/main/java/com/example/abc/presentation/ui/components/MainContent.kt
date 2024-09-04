@@ -9,6 +9,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import com.example.abc.domain.model.CustomItem
+import com.example.abc.presentation.ui.state.UiState
 import com.example.abc.presentation.ui.ui.theme.ABCTheme
 import com.example.abc.presentation.viewmodel.CustomItemViewModel
 
@@ -19,13 +21,21 @@ fun MainContent(viewModel: CustomItemViewModel) {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            val customItems by viewModel.customItems.collectAsState()
+            val customItemsState by viewModel.customItemsState.collectAsState()
             val currentPage = remember { mutableIntStateOf(0) }
 
-            if (customItems.isNotEmpty()) {
-                HorizontalPagerScreen(viewModel, currentPage)
+            when (customItemsState) {
+                is UiState.Loading -> LoadingView()
+                is UiState.Error -> ErrorView((customItemsState as UiState.Error).message)
+                is UiState.Success -> {
+                    val customItems = (customItemsState as UiState.Success).data
+                    if (customItems.isNotEmpty()) {
+                        HorizontalPagerScreen(viewModel, currentPage)
+                    }
+                }
             }
         }
     }
 }
+
 

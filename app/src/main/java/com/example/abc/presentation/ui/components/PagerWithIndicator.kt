@@ -18,8 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.abc.R
 import com.example.abc.domain.model.CustomItem
 import com.google.accompanist.pager.HorizontalPagerIndicator
 
@@ -29,14 +31,14 @@ fun PagerWithIndicator(customItems: List<CustomItem>, pagerState: PagerState) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(220.dp)
-            .padding(16.dp)
+            .height(dimensionResource(id = R.dimen.view_pager_height))
+            .padding(dimensionResource(id = R.dimen._16dp))
     ) {
         HorizontalPager(
             state = pagerState,
             modifier = Modifier
                 .fillMaxSize()
-                .clip(RoundedCornerShape(12.dp))
+                .clip(RoundedCornerShape(dimensionResource(id = R.dimen._12dp)))
                 .background(color = Color.White)
         ) { page ->
             Image(
@@ -54,7 +56,7 @@ fun PagerWithIndicator(customItems: List<CustomItem>, pagerState: PagerState) {
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentWidth(Alignment.CenterHorizontally)
-            .padding(vertical = 10.dp)
+            .padding(vertical = dimensionResource(id = R.dimen._10dp))
     )
 }
 

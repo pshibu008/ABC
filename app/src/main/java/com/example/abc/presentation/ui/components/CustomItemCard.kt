@@ -17,9 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.abc.R
 import com.example.abc.domain.model.Item
 
 @Composable
@@ -27,7 +29,7 @@ fun CustomItemContainer(item: Item) {
     Box(
         modifier = Modifier
             .background(color = Color.White)
-            .padding(12.dp)
+            .padding(dimensionResource(id = R.dimen._12dp))
     ) {
         CustomItemCard(item = item)
     }
@@ -38,7 +40,7 @@ fun CustomItemCard(item: Item) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = Color.LightGray, shape = RoundedCornerShape(8.dp))
+            .background(color = Color.LightGray, shape = RoundedCornerShape(dimensionResource(id = R.dimen._8dp)))
             .padding(8.dp)
     ) {
         Row(
@@ -46,20 +48,20 @@ fun CustomItemCard(item: Item) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Card(
-                modifier = Modifier.padding(8.dp),
-                shape = RoundedCornerShape(12.dp)
+                modifier = Modifier.padding(dimensionResource(id = R.dimen._8dp)),
+                shape = RoundedCornerShape(dimensionResource(id = R.dimen._12dp))
             ) {
                 Image(
                     painter = painterResource(id = item.image),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier.size(48.dp)
+                    modifier = Modifier.size(dimensionResource(id = R.dimen._48dp))
                 )
             }
 
             Column(
                 modifier = Modifier
-                    .padding(start = 8.dp, end = 4.dp)
+                    .padding(start = dimensionResource(id = R.dimen._8dp), end = dimensionResource(id = R.dimen._4dp))
                     .fillMaxWidth()
             ) {
                 Text(
