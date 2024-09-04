@@ -1,4 +1,4 @@
-package com.example.abc.domain.repository
+package com.example.abc.data.repository
 
 import com.example.abc.domain.model.CustomItem
 
