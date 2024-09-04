@@ -2,7 +2,7 @@ package com.example.abc.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.abc.domain.repository.CustomItemRepository
+import com.example.abc.data.repository.CustomItemRepository
 import com.example.abc.domain.usecase.FilterItemsUseCase
 import com.example.abc.domain.usecase.TopThreeFrequentCharactersUseCase
 
