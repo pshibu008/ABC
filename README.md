@@ -40,25 +40,16 @@ The project follows the MVVM (Model-View-ViewModel) architecture pattern and use
 5. **Build the Project**
     Build the project to make sure all configurations are correct.
 
-6. **Usage**
-  - Swipe the ViewPager: Swipe left or right to navigate through images in the ViewPager carousel.
-  - ViewPager and RecyclerView Interaction: The RecyclerView displays items related to the currently selected image in the ViewPager.
-  - Search Functionality: Use the search view to filter items in the RecyclerView.
-  - Character Frequency: The app calculates and displays the top three most frequent characters from the currently visible items in the RecyclerView.
-    
-7. **Development**
+6. **Development**
   - Kotlin Coroutines: Used for handling asynchronous tasks.
   - Flow: Provides a reactive stream of data.
   - MVVM Architecture: Separates concerns by defining models, view models, and views.
   - Jetpack Compose: Modern UI toolkit for building native UIs in a declarative manner.
-  - XML Layouts: Traditional layout files used alongside Jetpack Compose for certain UI elements.
     
 8. **Libraries Used**
   - Jetpack Compose
   - Kotlin Coroutines
   - Flow
-  - RecyclerView
-  - ViewPager2
 
 ### Attach Image Screenshot
 
